@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import type { CareerApiResponse, CareerFormErrors, CareerFormValues } from "@/types/career";
+import SuccessDialog from "@/components/ui/SuccessDialog";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ACCEPTED_FILE_TYPES = [
@@ -10,6 +11,7 @@ const ACCEPTED_FILE_TYPES = [
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 ];
 const ACCEPTED_EXTENSIONS = [".pdf", ".doc", ".docx"];
+const SUCCESS_MESSAGE = "Candidatura inviata correttamente. (non riceverai nessuna mail)";
 
 const initialValues: CareerFormValues = {
   firstName: "",
@@ -36,8 +38,13 @@ export default function CareersForm() {
   const [errors, setErrors] = useState<CareerFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSuccessDialogOpen, setIsSuccessDialogOpen] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const closeSuccessDialog = useCallback(() => {
+    setIsSuccessDialogOpen(false);
+  }, []);
 
   function onChange<K extends keyof CareerFormValues>(key: K, value: CareerFormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -72,6 +79,7 @@ export default function CareersForm() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSuccessMessage("");
+    setIsSuccessDialogOpen(false);
     setSubmitError("");
 
     const validationErrors = validateClient();
@@ -105,7 +113,8 @@ export default function CareersForm() {
       setValues(initialValues);
       setCvFile(null);
       setErrors({});
-      setSuccessMessage("La candidatura e stata inviata correttamente.");
+      setSuccessMessage(data.message || SUCCESS_MESSAGE);
+      setIsSuccessDialogOpen(true);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch {
       setSubmitError("Si e verificato un errore durante l'invio. Riprova piu tardi.");
@@ -115,8 +124,12 @@ export default function CareersForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mt-8 space-y-5 rounded border border-neutral-200 bg-white p-6 sm:p-8">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <>
+      <form
+        onSubmit={handleSubmit}
+        className="mt-8 space-y-5 rounded border border-neutral-200 bg-white p-6 sm:p-8"
+      >
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className="mb-1.5 block text-sm font-medium text-neutral-800">
             Nome *
@@ -152,7 +165,7 @@ export default function CareersForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-neutral-800">
             Email *
@@ -188,7 +201,7 @@ export default function CareersForm() {
         </div>
       </div>
 
-      <div>
+        <div>
         <label htmlFor="position" className="mb-1.5 block text-sm font-medium text-neutral-800">
           Posizione di interesse
         </label>
@@ -202,7 +215,7 @@ export default function CareersForm() {
         />
       </div>
 
-      <div>
+        <div>
         <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-neutral-800">
           Messaggio *
         </label>
@@ -218,7 +231,7 @@ export default function CareersForm() {
         {errors.message && <p className="mt-1 text-xs text-brand">{errors.message}</p>}
       </div>
 
-      <div>
+        <div>
         <label htmlFor="cv" className="mb-1.5 block text-sm font-medium text-neutral-800">
           Carica CV (PDF, DOC, DOCX - max 5 MB) *
         </label>
@@ -244,26 +257,28 @@ export default function CareersForm() {
         {errors.cv && <p className="mt-1 text-xs text-brand">{errors.cv}</p>}
       </div>
 
-      {submitError && (
-        <p className="rounded border border-brand/25 bg-brand/5 px-3 py-2 text-sm text-brand">
-          {submitError}
-        </p>
-      )}
-      {successMessage && (
-        <p className="rounded border border-brand-teal/30 bg-brand-teal/5 px-3 py-2 text-sm text-brand-teal-dark">
-          {successMessage}
-        </p>
-      )}
+        {submitError && (
+          <p className="rounded border border-brand/25 bg-brand/5 px-3 py-2 text-sm text-brand">
+            {submitError}
+          </p>
+        )}
 
-      <div>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="inline-flex items-center justify-center rounded bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          {isSubmitting ? "Invio in corso..." : "Invia candidatura"}
-        </button>
-      </div>
-    </form>
+        <div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="inline-flex items-center justify-center rounded bg-brand px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {isSubmitting ? "Invio in corso..." : "Invia candidatura"}
+          </button>
+        </div>
+      </form>
+
+      <SuccessDialog
+        open={isSuccessDialogOpen}
+        message={successMessage}
+        onClose={closeSuccessDialog}
+      />
+    </>
   );
 }

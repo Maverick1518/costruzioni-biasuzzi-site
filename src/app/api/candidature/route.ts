@@ -3,6 +3,7 @@ import nodemailer from "nodemailer";
 import type { CareerApiResponse } from "@/types/career";
 
 export const runtime = "nodejs";
+const MOCK_SUCCESS_MESSAGE = "Candidatura inviata correttamente. (non riceverai nessuna mail)";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ACCEPTED_FILE_TYPES = [
@@ -24,6 +25,11 @@ function validateEmail(email: string): boolean {
 
 function jsonResponse(status: number, payload: CareerApiResponse) {
   return NextResponse.json(payload, { status });
+}
+
+function isCareersFormMockMode(): boolean {
+  // Default to mock mode until SMTP is intentionally enabled.
+  return process.env.CAREERS_FORM_MODE !== "live";
 }
 
 export async function POST(request: Request) {
@@ -70,6 +76,13 @@ export async function POST(request: Request) {
       return jsonResponse(400, {
         ok: false,
         message: "Il CV supera la dimensione massima di 5 MB.",
+      });
+    }
+
+    if (isCareersFormMockMode()) {
+      return jsonResponse(200, {
+        ok: true,
+        message: MOCK_SUCCESS_MESSAGE,
       });
     }
 
@@ -126,7 +139,7 @@ export async function POST(request: Request) {
 
     return jsonResponse(200, {
       ok: true,
-      message: "La candidatura e stata inviata correttamente.",
+      message: MOCK_SUCCESS_MESSAGE,
     });
   } catch {
     return jsonResponse(500, {

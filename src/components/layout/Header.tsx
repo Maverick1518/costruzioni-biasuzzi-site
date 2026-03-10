@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks } from "@/data/navigation";
@@ -20,13 +19,12 @@ export default function Header() {
             className="flex items-center transition-opacity hover:opacity-80"
             aria-label="Costruzioni Generali Biasuzzi Srl - Homepage"
           >
-            <Image
+            <img
               src="/images/logo-biasuzzi.jpg"
               alt="Costruzioni Generali Biasuzzi Srl"
-              width={480}
-              height={280}
+              width="480"
+              height="280"
               className="h-10 w-auto sm:h-11"
-              priority
             />
           </Link>
 
