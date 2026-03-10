@@ -11,11 +11,11 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: {
-    default: "Costruzioni Generali Biasuzzi Srl",
-    template: "%s | Costruzioni Generali Biasuzzi Srl",
+    default: "Costruzioni Generali Biasuzzi S.R.L.",
+    template: "%s | Costruzioni Generali Biasuzzi S.R.L.",
   },
   description:
-    "Impresa specializzata in opere pubbliche, infrastrutture stradali, acquedotti, fognature e opere idrauliche in Veneto e Friuli Venezia Giulia.",
+    "Impresa specializzata in opere pubbliche, infrastrutture stradali, acquedotti, fognature e opere idrauliche.",
 };
 
 export default function RootLayout({

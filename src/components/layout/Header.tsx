@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks } from "@/data/navigation";
-import { company } from "@/data/company";
 import Container from "./Container";
 
 export default function Header() {
@@ -12,18 +12,23 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-slate-200 bg-white">
+    <header className="border-b border-neutral-200 bg-white">
       <Container>
         <div className="flex h-16 items-center justify-between">
-          {/* Brand / Logo placeholder */}
-          {/* PLACEHOLDER: sostituire con <Image> quando disponibile il logo aziendale */}
+          {/* Logo aziendale */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-slate-900 hover:text-slate-700 transition-colors"
+            className="flex items-center transition-opacity hover:opacity-80"
+            aria-label="Costruzioni Generali Biasuzzi Srl — Homepage"
           >
-            <span className="text-base font-semibold tracking-tight">
-              {company.name}
-            </span>
+            <Image
+              src="/images/logo-biasuzzi.jpg"
+              alt="Costruzioni Generali Biasuzzi Srl"
+              width={480}
+              height={280}
+              className="h-10 w-auto sm:h-11"
+              priority
+            />
           </Link>
 
           {/* Navigazione desktop */}
@@ -32,10 +37,10 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-slate-900 ${
+                className={`text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? "border-b-2 border-slate-800 pb-0.5 text-slate-900"
-                    : "text-slate-600"
+                    ? "border-b-2 border-brand-teal pb-0.5 text-brand-teal-dark"
+                    : "text-neutral-600 hover:text-brand-teal-dark"
                 }`}
               >
                 {link.label}
@@ -48,7 +53,7 @@ export default function Header() {
             type="button"
             aria-label={menuOpen ? "Chiudi menu" : "Apri menu di navigazione"}
             aria-expanded={menuOpen}
-            className="flex flex-col justify-center gap-1 p-2 text-slate-600 hover:text-slate-900 md:hidden"
+            className="flex flex-col justify-center gap-1 p-2 text-neutral-600 hover:text-neutral-900 md:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <span className="block h-0.5 w-5 bg-current" />
@@ -59,14 +64,19 @@ export default function Header() {
 
         {/* Menu mobile collapsible */}
         {menuOpen && (
-          <nav aria-label="Navigazione mobile" className="border-t border-slate-100 py-3 md:hidden">
+          <nav
+            aria-label="Navigazione mobile"
+            className="border-t border-neutral-100 py-3 md:hidden"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`block py-2.5 text-sm font-medium transition-colors hover:text-slate-900 ${
-                  pathname === link.href ? "text-slate-900" : "text-slate-600"
+                className={`block py-2.5 text-sm font-medium transition-colors ${
+                  pathname === link.href
+                    ? "text-brand-teal-dark"
+                    : "text-neutral-600 hover:text-brand-teal-dark"
                 }`}
               >
                 {link.label}

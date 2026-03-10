@@ -1,20 +1,26 @@
 import type { CompanyData } from "@/types/company";
 
-// PLACEHOLDER: sostituire i valori tra parentesi quadre con i dati reali dell'azienda
 export const company: CompanyData = {
-  name: "Costruzioni Generali Biasuzzi Srl",
+  name: "Costruzioni Generali Biasuzzi S.R.L.",
   shortName: "Biasuzzi",
-  legalForm: "Società a Responsabilità Limitata",
-  address: {
-    street: "[Via/Indirizzo sede legale — PLACEHOLDER]",
-    city: "[Città — PLACEHOLDER]",
-    province: "[Provincia — PLACEHOLDER]",
-    zip: "[CAP — PLACEHOLDER]",
+  legalForm: "Società a responsabilità limitata",
+  legalAddress: {
+    street: "Via Morganella Ovest 55",
+    city: "Ponzano Veneto",
+    province: "TV",
+    zip: "31050",
+  },
+  operationalAddress: {
+    street: "Via Feltrina 230/232",
+    city: "Treviso",
+    province: "TV",
+    zip: "31100",
   },
   contact: {
-    phone: "[Numero di telefono — PLACEHOLDER]",
-    email: "[Indirizzo email — PLACEHOLDER]",
+    phone: "0422 440474",
+    email: "info@biasuzzi.it",
   },
-  areas: ["Veneto", "Friuli Venezia Giulia"],
-  vatNumber: "[P.IVA — PLACEHOLDER]",
+  pec: "costrgenbiasuzzi@legalmail.it",
+  vatNumber: "01162920266",
+  rea: "TV - 144854",
 };

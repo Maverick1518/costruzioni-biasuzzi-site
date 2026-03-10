@@ -2,13 +2,26 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #1a1a1a;
 }
 
 @theme inline {
   --font-sans: var(--font-geist);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+}
+
+/*
+  Palette derivata dal logo Biasuzzi Costruzioni Generali:
+  — Rosso:  colore dominante del blocco logo   → #CC0000
+  — Teal:   elemento diagonale + "costruzioni generali" → #006B5A
+*/
+@theme {
+  --color-brand:           #CC0000; /* Rosso brand — primary */
+  --color-brand-dark:      #A00000; /* Rosso brand — hover / pressed */
+  --color-brand-teal:      #006B5A; /* Verde teal — accent */
+  --color-brand-teal-dark: #004A3C; /* Verde teal — dark surfaces */
+  --color-surface:         #F7F7F7; /* Sfondo sezioni alternate */
 }
 
 body {

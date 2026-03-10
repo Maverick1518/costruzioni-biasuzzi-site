@@ -9,12 +9,13 @@ export default function IntroSection() {
           <SectionTitle
             title="Chi siamo"
             subtitle="Un'impresa strutturata, con esperienza nel settore delle opere pubbliche e delle infrastrutture."
+            marker
           />
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
+          <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-600">
             <p>
-              Costruzioni Generali Biasuzzi Srl opera nel settore delle costruzioni civili
-              e delle infrastrutture pubbliche, con una presenza consolidata in Veneto e
-              Friuli Venezia Giulia.
+              Costruzioni Generali Biasuzzi S.R.L. opera nel settore delle costruzioni
+              civili e delle infrastrutture pubbliche, con esperienza consolidata nella
+              realizzazione di opere per committenti pubblici e privati.
             </p>
             <p>
               L&apos;azienda è qualificata per l&apos;esecuzione di opere stradali,

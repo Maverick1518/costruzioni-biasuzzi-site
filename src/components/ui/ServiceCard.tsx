@@ -6,9 +6,9 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <div className="rounded border border-slate-200 bg-white p-6">
-      <h3 className="mb-2 text-base font-semibold text-slate-900">{service.title}</h3>
-      <p className="text-sm leading-relaxed text-slate-600">{service.description}</p>
+    <div className="rounded border border-neutral-200 bg-white p-6 border-t-2 border-t-brand">
+      <h3 className="mb-2 text-base font-semibold text-neutral-900">{service.title}</h3>
+      <p className="text-sm leading-relaxed text-neutral-600">{service.description}</p>
     </div>
   );
 }

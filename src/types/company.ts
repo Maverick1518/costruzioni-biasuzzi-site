@@ -14,8 +14,12 @@ export interface CompanyData {
   name: string;
   shortName: string;
   legalForm: string;
-  address: CompanyAddress;
+  legalAddress: CompanyAddress;
+  operationalAddress: CompanyAddress;
   contact: CompanyContact;
-  areas: string[];
+  /** PEC — da mostrare solo nel footer e nei dati societari */
+  pec: string;
+  /** Partita IVA = Codice Fiscale */
   vatNumber: string;
+  rea: string;
 }
