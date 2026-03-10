@@ -8,5 +8,6 @@ export const navLinks: NavLink[] = [
   { label: "Chi siamo", href: "/chi-siamo" },
   { label: "Servizi", href: "/servizi" },
   { label: "Qualificazioni", href: "/qualificazioni" },
+  { label: "Lavora con noi", href: "/lavora-con-noi" },
   { label: "Contatti", href: "/contatti" },
 ];
