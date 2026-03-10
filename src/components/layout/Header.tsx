@@ -12,14 +12,13 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-neutral-200 bg-white">
+    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 shadow-sm backdrop-blur">
       <Container>
         <div className="flex h-16 items-center justify-between">
-          {/* Logo aziendale */}
           <Link
             href="/"
             className="flex items-center transition-opacity hover:opacity-80"
-            aria-label="Costruzioni Generali Biasuzzi Srl — Homepage"
+            aria-label="Costruzioni Generali Biasuzzi Srl - Homepage"
           >
             <Image
               src="/images/logo-biasuzzi.jpg"
@@ -31,7 +30,6 @@ export default function Header() {
             />
           </Link>
 
-          {/* Navigazione desktop */}
           <nav aria-label="Navigazione principale" className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => (
               <Link
@@ -48,7 +46,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Bottone menu mobile */}
           <button
             type="button"
             aria-label={menuOpen ? "Chiudi menu" : "Apri menu di navigazione"}
@@ -62,11 +59,10 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Menu mobile collapsible */}
         {menuOpen && (
           <nav
             aria-label="Navigazione mobile"
-            className="border-t border-neutral-100 py-3 md:hidden"
+            className="border-t border-neutral-100 bg-white/95 py-3 md:hidden"
           >
             {navLinks.map((link) => (
               <Link

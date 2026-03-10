@@ -16,6 +16,10 @@ export const company: CompanyData = {
     province: "TV",
     zip: "31100",
   },
+  operationalCoordinates: {
+    lat: 45.69159603888619,
+    lng: 12.195370382347715,
+  },
   contact: {
     phone: "0422 440474",
     email: "info@biasuzzi.it",

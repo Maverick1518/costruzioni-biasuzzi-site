@@ -20,7 +20,7 @@ const strengths = [
   {
     title: "Presenza sul territorio",
     description:
-      "Sede legale a Ponzano Veneto e sede operativa a Treviso, a supporto diretto dei cantieri e della clientela.",
+      "Sede legale a Ponzano Veneto e sede operativa a Treviso, a supporto diretto dei cantieri e della committenza.",
   },
 ];
 

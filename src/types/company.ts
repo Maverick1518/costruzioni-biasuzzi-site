@@ -5,6 +5,11 @@ export interface CompanyAddress {
   zip: string;
 }
 
+export interface CompanyCoordinates {
+  lat: number;
+  lng: number;
+}
+
 export interface CompanyContact {
   phone: string;
   email: string;
@@ -16,8 +21,9 @@ export interface CompanyData {
   legalForm: string;
   legalAddress: CompanyAddress;
   operationalAddress: CompanyAddress;
+  operationalCoordinates: CompanyCoordinates;
   contact: CompanyContact;
-  /** PEC — da mostrare solo nel footer e nei dati societari */
+  /** PEC da mostrare solo nel footer e nei dati societari */
   pec: string;
   /** Partita IVA = Codice Fiscale */
   vatNumber: string;

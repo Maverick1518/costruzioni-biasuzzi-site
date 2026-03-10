@@ -1,4 +1,4 @@
-import type { Qualification } from "@/types/qualification";
+import type { Qualification, QualificationDocument } from "@/types/qualification";
 
 export const qualifications: Qualification[] = [
   {
@@ -52,5 +52,30 @@ export const qualifications: Qualification[] = [
     category: "Demolizione di opere",
     classification: "II",
     description: "Demolizioni strutturali e selettive di manufatti edilizi esistenti.",
+  },
+];
+
+export const qualificationDocuments: QualificationDocument[] = [
+  {
+    id: "soa",
+    title: "Certificazione SOA",
+    description: "Attestazione di qualificazione per l'esecuzione di lavori pubblici.",
+    fileUrl: "/documents/soa.pdf",
+    previewImage: "/documents/previews/soa-preview.jpg",
+    previewAlt: "Anteprima prima pagina della Certificazione SOA",
+    downloadName: "costruzioni-generali-biasuzzi-soa.pdf",
+    badgeLabel: "PDF",
+    note: "Documento consultabile online e scaricabile in formato PDF.",
+  },
+  {
+    id: "iso-9001-2015",
+    title: "Certificazione ISO 9001:2015",
+    description: "Certificazione del sistema di gestione per la qualita.",
+    fileUrl: "/documents/iso-9001-2015.pdf",
+    previewImage: "/documents/previews/iso-9001-2015-preview.jpg",
+    previewAlt: "Anteprima prima pagina della Certificazione ISO 9001:2015",
+    downloadName: "costruzioni-generali-biasuzzi-iso-9001-2015.pdf",
+    badgeLabel: "PDF",
+    note: "Documento consultabile online e scaricabile in formato PDF.",
   },
 ];

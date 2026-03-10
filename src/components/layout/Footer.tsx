@@ -7,19 +7,17 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-900 text-neutral-400">
-      {/* Striscia brand */}
-      <div className="h-1 bg-brand" />
+    <footer className="bg-brand-teal text-white/80">
+      <div className="h-px bg-white/20" />
 
       <Container className="py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {/* Sedi */}
           <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
               {company.name}
             </p>
             <address className="not-italic text-sm leading-relaxed">
-              <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-white/50">
+              <p className="mb-0.5 text-xs font-medium uppercase tracking-wide text-white/60">
                 Sede legale
               </p>
               <p>{company.legalAddress.street}</p>
@@ -27,7 +25,7 @@ export default function Footer() {
                 {company.legalAddress.zip} {company.legalAddress.city} ({company.legalAddress.province})
               </p>
 
-              <p className="mb-0.5 mt-3 text-xs font-medium uppercase tracking-wide text-white/50">
+              <p className="mb-0.5 mt-3 text-xs font-medium uppercase tracking-wide text-white/60">
                 Sede operativa
               </p>
               <p>{company.operationalAddress.street}</p>
@@ -37,7 +35,6 @@ export default function Footer() {
             </address>
           </div>
 
-          {/* Navigazione */}
           <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
               Navigazione
@@ -53,7 +50,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contatti e dati societari */}
           <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
               Contatti
@@ -77,20 +73,18 @@ export default function Footer() {
                   {company.contact.email}
                 </a>
               </p>
-              <p className="mt-2 text-white/40">
-                PEC: {company.pec}
-              </p>
+              <p className="mt-2 text-white/70">PEC: {company.pec}</p>
             </address>
 
-            <div className="mt-4 border-t border-neutral-800 pt-4 text-xs text-white/30">
+            <div className="mt-4 border-t border-white/20 pt-4 text-xs text-white/70">
               <p>P. IVA / C.F. {company.vatNumber}</p>
               <p>REA {company.rea}</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-neutral-800 pt-6 text-center text-xs text-white/30">
-          © {currentYear} {company.name}. Tutti i diritti riservati.
+        <div className="mt-10 border-t border-white/20 pt-6 text-center text-xs text-white/60">
+          (c) {currentYear} {company.name}. Tutti i diritti riservati.
         </div>
       </Container>
     </footer>
