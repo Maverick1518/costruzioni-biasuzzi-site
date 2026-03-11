@@ -4,6 +4,7 @@ import type { CareerApiResponse } from "@/types/career";
 
 export const runtime = "nodejs";
 const MOCK_SUCCESS_MESSAGE = "Candidatura inviata correttamente. (non riceverai nessuna mail)";
+const LIVE_SUCCESS_MESSAGE = "Candidatura inviata correttamente. Riceverai una conferma all'indirizzo email indicato.";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ACCEPTED_FILE_TYPES = [
@@ -112,10 +113,11 @@ export async function POST(request: Request) {
 
     const cvBuffer = Buffer.from(await cv.arrayBuffer());
 
+    // Mail 1: notifica interna a info@biasuzzi.it con CV allegato
     await transporter.sendMail({
       from: mailFrom,
       to: mailTo,
-      subject: `Nuova candidatura dal sito - ${firstName} ${lastName}`,
+      subject: `Nuova candidatura dal sito — ${firstName} ${lastName}`,
       text: [
         "Nuova candidatura dal sito web",
         "",
@@ -137,9 +139,32 @@ export async function POST(request: Request) {
       ],
     });
 
+    // Mail 2: conferma al candidato (riepilogo testuale, senza allegare il CV)
+    await transporter.sendMail({
+      from: mailFrom,
+      to: email,
+      subject: "Conferma ricezione candidatura — Costruzioni Generali Biasuzzi S.R.L.",
+      text: [
+        `Gentile ${firstName} ${lastName},`,
+        "",
+        "Abbiamo ricevuto la sua candidatura inviata tramite il sito web.",
+        "Di seguito il riepilogo delle informazioni inviate.",
+        "",
+        `Posizione di interesse: ${position || "Non indicata"}`,
+        `CV allegato: ${cv.name}`,
+        "",
+        "Lettera/Messaggio:",
+        message,
+        "",
+        "Valuteremo la sua candidatura e la contatteremo se il profilo risulterà di interesse.",
+        "",
+        "Costruzioni Generali Biasuzzi S.R.L.",
+      ].join("\n"),
+    });
+
     return jsonResponse(200, {
       ok: true,
-      message: MOCK_SUCCESS_MESSAGE,
+      message: LIVE_SUCCESS_MESSAGE,
     });
   } catch {
     return jsonResponse(500, {

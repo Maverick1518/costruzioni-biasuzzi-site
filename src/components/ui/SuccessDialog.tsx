@@ -4,11 +4,12 @@ import { useEffect, useRef } from "react";
 
 interface SuccessDialogProps {
   open: boolean;
+  title?: string;
   message: string;
   onClose: () => void;
 }
 
-export default function SuccessDialog({ open, message, onClose }: SuccessDialogProps) {
+export default function SuccessDialog({ open, title = "Candidatura inviata", message, onClose }: SuccessDialogProps) {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
@@ -42,7 +43,7 @@ export default function SuccessDialog({ open, message, onClose }: SuccessDialogP
         onClick={(event) => event.stopPropagation()}
       >
         <h2 id="careers-success-dialog-title" className="text-lg font-semibold text-neutral-900">
-          Candidatura inviata
+          {title}
         </h2>
         <p className="mt-3 text-sm leading-6 text-neutral-700">{message}</p>
         <div className="mt-6 flex justify-end">

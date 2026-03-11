@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
+import ContactForm from "@/components/sections/ContactForm";
 import { company } from "@/data/company";
 
 export const metadata: Metadata = {
@@ -9,12 +10,10 @@ export const metadata: Metadata = {
     "Contatta Costruzioni Generali Biasuzzi S.R.L. per informazioni e richieste tecniche. Sede operativa a Treviso.",
 };
 
-const mapQuery = encodeURIComponent(
-  `${company.operationalAddress.street}, ${company.operationalAddress.zip} ${company.operationalAddress.city} (${company.operationalAddress.province})`,
-);
-
 const mapEmbedUrl = `https://www.google.com/maps?q=${company.operationalCoordinates.lat},${company.operationalCoordinates.lng}&z=16&output=embed`;
-const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+const mapExternalUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  `${company.operationalAddress.street}, ${company.operationalAddress.zip} ${company.operationalAddress.city}`,
+)}`;
 
 export default function ContattiPage() {
   return (
@@ -22,113 +21,100 @@ export default function ContattiPage() {
       <Container>
         <SectionTitle
           title="Contatti"
-          subtitle="Riferimenti aziendali, sedi e dati societari in un unico quadro informativo essenziale."
+          subtitle="Riferimenti aziendali, sedi e dati societari."
           marker
         />
 
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-          <div className="space-y-6">
-            <section className="rounded border border-neutral-200 bg-white p-6">
-              <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500">
-                Sedi
-              </h2>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <address className="not-italic text-sm leading-relaxed text-neutral-700">
-                  <p className="mb-1 font-semibold text-neutral-900">Sede legale</p>
-                  <p>{company.legalAddress.street}</p>
-                  <p>
-                    {company.legalAddress.zip} {company.legalAddress.city} ({company.legalAddress.province})
-                  </p>
-                </address>
-                <address className="not-italic text-sm leading-relaxed text-neutral-700">
-                  <p className="mb-1 font-semibold text-neutral-900">Sede operativa</p>
-                  <p>{company.operationalAddress.street}</p>
-                  <p>
-                    {company.operationalAddress.zip} {company.operationalAddress.city} ({company.operationalAddress.province})
-                  </p>
-                </address>
-              </div>
-            </section>
+        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
 
-            <section className="rounded border border-neutral-200 bg-white p-6">
-              <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500">
-                Recapiti
-              </h2>
-              <div className="space-y-2 text-sm text-neutral-700">
-                <p>
-                  <span className="font-medium text-neutral-900">Telefono</span>
-                  <span className="mx-2 text-neutral-300">|</span>
-                  <a href={`tel:${company.contact.phone}`} className="hover:underline">
-                    {company.contact.phone}
-                  </a>
-                </p>
-                <p>
-                  <span className="font-medium text-neutral-900">Email</span>
-                  <span className="mx-2 text-neutral-300">|</span>
+          {/* Riquadro dati compatto */}
+          <div className="rounded border border-neutral-200 bg-white p-6 text-sm">
+            <p className="mb-4 font-semibold text-neutral-900">{company.name}</p>
+
+            <dl className="space-y-2 text-neutral-700">
+              <div className="flex gap-x-3">
+                <dt className="w-28 shrink-0 text-neutral-400">Sede legale</dt>
+                <dd>
+                  <address className="not-italic leading-snug">
+                    <span className="block">{company.legalAddress.street}</span>
+                    <span className="block">
+                      {company.legalAddress.zip} {company.legalAddress.city} ({company.legalAddress.province})
+                    </span>
+                  </address>
+                </dd>
+              </div>
+              <div className="flex gap-x-3">
+                <dt className="w-28 shrink-0 text-neutral-400">Sede operativa</dt>
+                <dd>
+                  <address className="not-italic leading-snug">
+                    <span className="block">{company.operationalAddress.street}</span>
+                    <span className="block">
+                      {company.operationalAddress.zip} {company.operationalAddress.city} ({company.operationalAddress.province})
+                    </span>
+                  </address>
+                </dd>
+              </div>
+              <div className="flex gap-x-3">
+                <dt className="w-28 shrink-0 text-neutral-400">P. IVA / C.F.</dt>
+                <dd>{company.vatNumber}</dd>
+              </div>
+              <div className="flex gap-x-3">
+                <dt className="w-28 shrink-0 text-neutral-400">REA</dt>
+                <dd>{company.rea}</dd>
+              </div>
+              <div className="flex gap-x-3">
+                <dt className="w-28 shrink-0 text-neutral-400">Email</dt>
+                <dd>
                   <a href={`mailto:${company.contact.email}`} className="hover:underline">
                     {company.contact.email}
                   </a>
-                </p>
+                </dd>
               </div>
-            </section>
-
-            <section className="rounded border border-neutral-200 bg-neutral-50 p-6">
-              <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-neutral-500">
-                Dati societari
-              </h2>
-              <dl className="space-y-2 text-sm text-neutral-700">
-                <div className="flex flex-wrap gap-x-2">
-                  <dt className="font-medium text-neutral-900">Ragione sociale:</dt>
-                  <dd>{company.name}</dd>
-                </div>
-                <div className="flex flex-wrap gap-x-2">
-                  <dt className="font-medium text-neutral-900">P. IVA / C.F.:</dt>
-                  <dd>{company.vatNumber}</dd>
-                </div>
-                <div className="flex flex-wrap gap-x-2">
-                  <dt className="font-medium text-neutral-900">REA:</dt>
-                  <dd>{company.rea}</dd>
-                </div>
-                <div className="flex flex-wrap gap-x-2">
-                  <dt className="font-medium text-neutral-900">PEC:</dt>
-                  <dd>{company.pec}</dd>
-                </div>
-              </dl>
-            </section>
+              <div className="flex gap-x-3">
+                <dt className="w-28 shrink-0 text-neutral-400">PEC</dt>
+                <dd>{company.pec}</dd>
+              </div>
+              <div className="flex gap-x-3">
+                <dt className="w-28 shrink-0 text-neutral-400">Telefono</dt>
+                <dd>
+                  <a href={`tel:${company.contact.phone}`} className="hover:underline">
+                    {company.contact.phone}
+                  </a>
+                </dd>
+              </div>
+            </dl>
           </div>
 
-          <section className="rounded border border-neutral-200 bg-white p-4 sm:p-5">
-            <div className="mb-4 flex items-start justify-between gap-3">
-              <div>
-                <h2 className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
-                  Sede operativa - geolocalizzazione
-                </h2>
-                <p className="mt-1 text-sm text-neutral-700">
-                  {company.operationalAddress.street}, {company.operationalAddress.zip}{" "}
-                  {company.operationalAddress.city} ({company.operationalAddress.province})
-                </p>
-              </div>
+          {/* Mappa sede operativa */}
+          <div className="flex flex-col rounded border border-neutral-200 bg-white">
+            <div className="flex items-center justify-between px-4 py-3">
+              <p className="text-xs text-neutral-500">
+                Sede operativa — {company.operationalAddress.street},{" "}
+                {company.operationalAddress.city}
+              </p>
               <a
                 href={mapExternalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0 text-xs font-medium text-brand-teal hover:underline"
               >
-                Apri su Google Maps
+                Apri su Maps
               </a>
             </div>
-
-            <div className="overflow-hidden rounded border border-neutral-200">
+            <div className="flex-1 overflow-hidden rounded-b border-t border-neutral-100">
               <iframe
                 title="Mappa sede operativa Costruzioni Generali Biasuzzi S.R.L."
                 src={mapEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-[320px] w-full sm:h-[420px]"
+                className="h-72 w-full lg:h-full"
               />
             </div>
-          </section>
+          </div>
+
         </div>
+
+        <ContactForm />
       </Container>
     </div>
   );
