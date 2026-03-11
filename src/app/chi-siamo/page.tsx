@@ -9,7 +9,7 @@ import { services } from "@/data/services";
 export const metadata: Metadata = {
   title: "Chi siamo",
   description:
-    "Profilo aziendale di Costruzioni Generali Biasuzzi S.R.L., impresa attiva nelle opere pubbliche e nelle infrastrutture.",
+    "Profilo aziendale di Costruzioni Generali Biasuzzi S.r.l., impresa attiva nelle opere pubbliche e nelle infrastrutture.",
 };
 
 export default function ChiSiamoPage() {
@@ -26,14 +26,14 @@ export default function ChiSiamoPage() {
             <div className="max-w-3xl">
               <SectionTitle
                 title="Presenza aziendale"
-                subtitle="Una struttura organizzata a supporto dei cantieri e delle attivita sul territorio."
+                subtitle="Una struttura organizzata a supporto dei cantieri e delle attività sul territorio."
                 marker
               />
               <div className="mt-6 space-y-4 text-base leading-relaxed text-neutral-600">
                 <p className="text-descriptive">
-                  La societa opera con sede legale a {company.legalAddress.city} e sede
+                  La società opera con sede legale a {company.legalAddress.city} e sede
                   operativa a {company.operationalAddress.city}, mantenendo un presidio
-                  diretto sulle commesse e sulle attivita di cantiere.
+                  diretto sulle commesse e sulle attività di cantiere.
                 </p>
                 <p className="text-descriptive">
                   L&apos;organizzazione aziendale supporta interventi in ambito civile e
@@ -69,7 +69,7 @@ export default function ChiSiamoPage() {
 
           <div className="mt-12 rounded border border-neutral-200 bg-white p-6">
             <h2 className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
-              Ambiti di attivita
+              Ambiti di attività
             </h2>
             <ul className="mt-4 grid gap-3 text-sm text-neutral-600 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (

@@ -11,7 +11,7 @@ export default function Hero() {
             Opere pubbliche e infrastrutture con competenza e affidabilità
           </h1>
           <p className="text-descriptive mt-5 text-base leading-relaxed text-white/85 sm:text-lg">
-            Costruzioni Generali Biasuzzi Srl è un&apos;impresa specializzata nella realizzazione di infrastrutture stradali, reti idriche, opere idrauliche e bonifiche ambientali.
+            Costruzioni Generali Biasuzzi S.R.L. è un&apos;impresa specializzata nella realizzazione di infrastrutture stradali, reti idriche, opere idrauliche e bonifiche ambientali.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href="/contatti" variant="primary">

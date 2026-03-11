@@ -11,8 +11,8 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: {
-    default: "Costruzioni Generali Biasuzzi S.R.L.",
-    template: "%s | Costruzioni Generali Biasuzzi S.R.L.",
+    default: "Costruzioni Generali Biasuzzi S.r.l.",
+    template: "%s | Costruzioni Generali Biasuzzi S.r.l.",
   },
   description:
     "Impresa specializzata in opere pubbliche, infrastrutture stradali, acquedotti, fognature e opere idrauliche.",

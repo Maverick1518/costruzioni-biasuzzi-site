@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Costruzioni Generali Biasuzzi S.R.L.",
+  name: "Costruzioni Generali Biasuzzi S.r.l.",
   shortName: "Biasuzzi Costruzioni",
   description:
     "Impresa specializzata in opere pubbliche, infrastrutture stradali, acquedotti, fognature e opere idrauliche.",

@@ -17,11 +17,11 @@ export default function Header() {
           <Link
             href="/"
             className="flex items-center transition-opacity hover:opacity-80"
-            aria-label="Costruzioni Generali Biasuzzi Srl - Homepage"
+            aria-label="Costruzioni Generali Biasuzzi S.r.l. - Homepage"
           >
             <img
               src="/images/logo-biasuzzi.jpg"
-              alt="Costruzioni Generali Biasuzzi Srl"
+              alt="Costruzioni Generali Biasuzzi S.r.l."
               width="480"
               height="280"
               className="h-10 w-auto sm:h-11"

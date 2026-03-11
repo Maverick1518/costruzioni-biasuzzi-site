@@ -6,7 +6,7 @@ import CareersForm from "@/components/sections/CareersForm";
 export const metadata: Metadata = {
   title: "Lavora con noi",
   description:
-    "Invia la tua candidatura a Costruzioni Generali Biasuzzi S.R.L. compilando il modulo e allegando il curriculum vitae.",
+    "Invia la tua candidatura a Costruzioni Generali Biasuzzi S.r.l. compilando il modulo e allegando il curriculum vitae.",
 };
 
 export default function LavoraConNoiPage() {
@@ -16,7 +16,7 @@ export default function LavoraConNoiPage() {
         <div className="max-w-3xl">
           <SectionTitle
             title="Lavora con noi"
-            subtitle="L'azienda valuta candidature per profili operativi, tecnici e amministrativi. E possibile inviare la propria candidatura compilando il modulo seguente e allegando il curriculum vitae."
+            subtitle="L'azienda valuta candidature per profili operativi, tecnici e amministrativi. È possibile inviare la propria candidatura compilando il modulo seguente e allegando il curriculum vitae."
             marker
           />
         </div>

@@ -7,7 +7,7 @@ import { company } from "@/data/company";
 export const metadata: Metadata = {
   title: "Contatti",
   description:
-    "Contatta Costruzioni Generali Biasuzzi S.R.L. per informazioni e richieste tecniche. Sede operativa a Treviso.",
+    "Contatta Costruzioni Generali Biasuzzi S.r.l. per informazioni e richieste tecniche. Sede operativa a Treviso.",
 };
 
 const mapEmbedUrl = `https://www.google.com/maps?q=${company.operationalCoordinates.lat},${company.operationalCoordinates.lng}&z=16&output=embed`;
@@ -103,7 +103,7 @@ export default function ContattiPage() {
             </div>
             <div className="flex-1 overflow-hidden rounded-b border-t border-neutral-100">
               <iframe
-                title="Mappa sede operativa Costruzioni Generali Biasuzzi S.R.L."
+                title="Mappa sede operativa Costruzioni Generali Biasuzzi S.r.l."
                 src={mapEmbedUrl}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

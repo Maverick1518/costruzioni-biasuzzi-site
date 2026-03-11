@@ -70,7 +70,7 @@ export const qualificationDocuments: QualificationDocument[] = [
   {
     id: "iso-9001-2015",
     title: "Certificazione ISO 9001:2015",
-    description: "Certificazione del sistema di gestione per la qualita.",
+    description: "Certificazione del sistema di gestione per la qualità.",
     fileUrl: "/documents/iso-9001-2015.pdf",
     previewImage: "/documents/previews/iso-9001-2015-preview.jpg",
     previewAlt: "Anteprima prima pagina della Certificazione ISO 9001:2015",

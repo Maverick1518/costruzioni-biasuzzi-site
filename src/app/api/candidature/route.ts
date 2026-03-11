@@ -143,7 +143,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: mailFrom,
       to: email,
-      subject: "Conferma ricezione candidatura — Costruzioni Generali Biasuzzi S.R.L.",
+      subject: "Conferma ricezione candidatura — Costruzioni Generali Biasuzzi S.r.l.",
       text: [
         `Gentile ${firstName} ${lastName},`,
         "",
@@ -158,7 +158,7 @@ export async function POST(request: Request) {
         "",
         "Valuteremo la sua candidatura e la contatteremo se il profilo risulterà di interesse.",
         "",
-        "Costruzioni Generali Biasuzzi S.R.L.",
+        "Costruzioni Generali Biasuzzi S.r.l.",
       ].join("\n"),
     });
 
@@ -169,7 +169,7 @@ export async function POST(request: Request) {
   } catch {
     return jsonResponse(500, {
       ok: false,
-      message: "Si e verificato un errore durante l'invio della candidatura.",
+      message: "Si è verificato un errore durante l'invio della candidatura.",
     });
   }
 }

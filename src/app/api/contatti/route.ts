@@ -117,7 +117,7 @@ export async function POST(request: Request) {
         "",
         "Sarà nostra cura rispondere il prima possibile.",
         "",
-        "Costruzioni Generali Biasuzzi S.R.L.",
+        "Costruzioni Generali Biasuzzi S.r.l.",
       ].join("\n"),
     });
 

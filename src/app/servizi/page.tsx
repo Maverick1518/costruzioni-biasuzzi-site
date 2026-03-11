@@ -7,7 +7,7 @@ import { services } from "@/data/services";
 export const metadata: Metadata = {
   title: "Servizi",
   description:
-    "Ambiti operativi di Costruzioni Generali Biasuzzi S.R.L.: lavori stradali, reti idriche, opere idrauliche, demolizioni e bonifiche.",
+    "Ambiti operativi di Costruzioni Generali Biasuzzi S.r.l.: lavori stradali, reti idriche, opere idrauliche, demolizioni e bonifiche.",
 };
 
 export default function ServiziPage() {

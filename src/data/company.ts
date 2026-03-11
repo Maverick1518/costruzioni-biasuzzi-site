@@ -1,7 +1,7 @@
 import type { CompanyData } from "@/types/company";
 
 export const company: CompanyData = {
-  name: "Costruzioni Generali Biasuzzi S.R.L.",
+  name: "Costruzioni Generali Biasuzzi S.r.l.",
   shortName: "Biasuzzi",
   legalForm: "Società a responsabilità limitata",
   legalAddress: {

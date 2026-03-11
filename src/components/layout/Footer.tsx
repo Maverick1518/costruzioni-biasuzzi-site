@@ -84,7 +84,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-white/20 pt-6 text-center text-xs text-white/60">
-          (c) {currentYear} {company.name}. Tutti i diritti riservati.
+          © {currentYear} {company.name}. Tutti i diritti riservati.
         </div>
       </Container>
     </footer>

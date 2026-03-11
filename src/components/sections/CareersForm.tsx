@@ -106,7 +106,7 @@ export default function CareersForm() {
 
       const data = (await response.json()) as CareerApiResponse;
       if (!response.ok || !data.ok) {
-        setSubmitError(data.message || "Si e verificato un errore durante l'invio.");
+        setSubmitError(data.message || "Si è verificato un errore durante l'invio.");
         return;
       }
 
@@ -117,7 +117,7 @@ export default function CareersForm() {
       setIsSuccessDialogOpen(true);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch {
-      setSubmitError("Si e verificato un errore durante l'invio. Riprova piu tardi.");
+      setSubmitError("Si è verificato un errore durante l'invio. Riprova più tardi.");
     } finally {
       setIsSubmitting(false);
     }
